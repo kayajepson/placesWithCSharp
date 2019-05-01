@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
+  @using Travel.Models;
+
+  <h1>Places I've Been</h1>
+
+  <ul>
+  @if (Model.Count == 0)
+  {
+    <p>Younever go anywhere!</p>
+  }
+  @if(Model.Count != 0)
+  {
+    @foreach (Places places in Model)
+    {
+      <li><a href='/places/@places.GetId()'>@places.CityName</a></li>
+    }
+  }
+  </ul>
+
+  <a href="/places/new">Add a new place.</a>
+
+  @* <form action="/items/delete" method="post">
+    <button type="submit" name="button">Clear All Items</button>
+  </form> *@
+</body>
+</html>
